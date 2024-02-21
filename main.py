@@ -1,9 +1,11 @@
 import pygame
-from board import Board
-from settings import win
+from game.board import Board
+from game.settings import win
+
+board = Board()
 
 def main():
-    board = Board()
+    
     run = True 
     while run: 
         for event in pygame.event.get():
