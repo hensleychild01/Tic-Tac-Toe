@@ -1,6 +1,6 @@
 import pygame
-from game.board import Board
-from game.settings import win
+from board import Board
+from settings import win
 
 board = Board()
 
