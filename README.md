@@ -2,6 +2,6 @@
 
 ### Working on networking this thing
 
-## Rquirements: 
+## Requirements: 
 - pygame
 - socket (included in python)
