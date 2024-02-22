@@ -15,6 +15,10 @@ except:
     print(f"$ Server unable to be hosted at {HOST}:{PORT}")
     exit()
 
+server.listen(1)
+client, address = server.accept()
+print(f"$ Client connected from {address[0]}")
+
 import pygame
 from board import Board
 from settings import win
@@ -30,7 +34,7 @@ def main():
                     run = False 
                     break
                 case pygame.MOUSEBUTTONDOWN:
-                    board.make_move(pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
+                    board.make_move(server, pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
 
         win.fill((0, 0, 0))
 

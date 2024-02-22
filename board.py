@@ -1,5 +1,7 @@
 import pygame
+from socket import socket
 from settings import win, WIDTH, HEIGHT
+from network_functions import send_move, receive_move
 
 class Board: 
     def __init__(self) -> None:
@@ -65,13 +67,15 @@ class Board:
         
         return (row, col)
 
-    def make_move(self, mouse_x: int, mouse_y: int) -> None: 
+    def make_move(self, server: socket, mouse_x: int, mouse_y: int) -> None: 
         if not self.winner:
             r, c = self.xy_to_rc(mouse_x, mouse_y)
 
             if not self.board[r][c]: 
                 self.board[r][c] = self.turn
-            
+
+                send_move(server, r, c, self.turn)
+
                 if self.turn == self.x_enum:
                     self.turn = self.o_enum
                 else:
