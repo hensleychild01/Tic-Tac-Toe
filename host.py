@@ -13,6 +13,7 @@ try:
     print(f"$ Server hosted at {HOST}:{PORT}")
 except: 
     print(f"$ Server unable to be hosted at {HOST}:{PORT}")
+    exit()
 
 import pygame
 from board import Board
