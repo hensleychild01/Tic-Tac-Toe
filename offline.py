@@ -27,6 +27,8 @@ class Board:
             [0, 0, 0]
         ]
 
+        self.sound = pygame.mixer.Sound("./assets/sounds/pop (1).mp3")
+
         self.reset_button = ResetButton()
 
         self.x_enum: int = 1
@@ -51,6 +53,8 @@ class Board:
         self.turn = self.x_enum if self.turn == self.x_enum else self.o_enum
         self.winner = 0
         self.winner_printed: bool = False
+
+        self.sound.play()
 
     def draw(self) -> None: 
         row_height: int = (WIDTH/3).__floor__()
@@ -128,6 +132,8 @@ class Board:
                     self.turn = self.o_enum
                 else:
                     self.turn = self.x_enum
+
+                self.sound.play()
 
     def check_for_winner(self) -> None:
         for r in range(3):
